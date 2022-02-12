@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:watch": "npx rollup --config --watch",
-    "build:dist": "npx rollup --config",
+    "build:watch": "rollup --config --watch",
+    "build:dist": "rollup --config",
     "start": "node dist/index.js",
-    "dev": "NODE_ENV=dev node dist/index.js"
+    "start:dev": "NODE_ENV=dev node dist/index.js"
   },
   "keywords": [],
   "author": "",

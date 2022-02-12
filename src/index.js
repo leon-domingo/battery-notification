@@ -23,9 +23,22 @@ commander
 
 const options = commander.opts()
 
+const checkLevels = percents => {
+  percents.forEach(percent => {
+    if (percent < 0 || percent > 100) {
+      throw new Error(
+        `Level of ${percent}% is not valid. Values must be between 0 and 100`
+      )
+    }
+  })
+}
+
 try {
   const minLevel = +options.minValue
   const maxLevel = +options.maxValue
+
+  checkLevels([minLevel, maxLevel])
+
   const frequency = options.frequency
   main({ minLevel, maxLevel, frequency })
 } catch (error) {
