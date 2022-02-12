@@ -3,7 +3,7 @@ export const DEFAULT_LEVELS = {
   MAX_LEVEL: 85,
 }
 
-export const DEFAULT_FRECUENCY = 5
+export const DEFAULT_FREQUENCY = '5m'
 
 export const MESSAGES = {
   TITLE: 'Battery notification 🔋',

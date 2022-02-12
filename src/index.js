@@ -1,7 +1,29 @@
-import { DEFAULT_FRECUENCY, DEFAULT_LEVELS } from './constants'
+import { DEFAULT_FREQUENCY, DEFAULT_LEVELS } from './constants'
 import main from './main'
+import commander from 'commander'
 
-const minLevel = +(process.argv[2] || DEFAULT_LEVELS.MIN_LEVEL)
-const maxLevel = +(process.argv[3] || DEFAULT_LEVELS.MAX_LEVEL)
-const frecuency = +(process.argv[4] || DEFAULT_FRECUENCY)
-main({ minLevel, maxLevel, frecuency })
+commander
+  .version('1.0.0', '-v, --version')
+  .option(
+    '-m, --min-value <value>',
+    'Minimum percent level (during discharging) before showing a notification',
+    DEFAULT_LEVELS.MIN_LEVEL
+  )
+  .option(
+    '-M, --max-value <value>',
+    'Maximum percent level (during charging) before showing a notification',
+    DEFAULT_LEVELS.MAX_LEVEL
+  )
+  .option(
+    '-f, --frequency <value>',
+    'Frequency (in minutes) the process will watch the battery status',
+    DEFAULT_FREQUENCY
+  )
+  .parse(process.argv)
+
+const options = commander.opts()
+
+const minLevel = +options.minValue
+const maxLevel = +options.maxValue
+const frequency = options.frequency
+main({ minLevel, maxLevel, frequency })

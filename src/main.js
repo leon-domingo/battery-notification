@@ -3,7 +3,7 @@ import si from 'systeminformation'
 import notifier from 'node-notifier'
 import {
   CHARGE_STATUS,
-  DEFAULT_FRECUENCY,
+  DEFAULT_FREQUENCY,
   DEFAULT_LEVELS,
   MESSAGES,
 } from './constants'
@@ -12,12 +12,14 @@ import { getCronDefinition, setWaitingNotification } from './utils'
 function main({
   minLevel = DEFAULT_LEVELS.MIN_LEVEL,
   maxLevel = DEFAULT_LEVELS.MAX_LEVEL,
-  frecuency = DEFAULT_FRECUENCY,
+  frequency = DEFAULT_FREQUENCY,
 }) {
   console.log(
-    `[minLevel = ${minLevel} | maxLevel = ${maxLevel}] | frecuency = ${frecuency}min`
+    `[minLevel = ${minLevel}% | maxLevel = ${maxLevel}% | frequency = ${frequency}]`
   )
-  cron.schedule(getCronDefinition(frecuency), () => {
+  const cronDefinition = getCronDefinition(frequency)
+  console.log(cronDefinition)
+  cron.schedule(cronDefinition, () => {
     si.battery()
       .then(({ percent, isCharging }) => {
         const chargeStatus = isCharging

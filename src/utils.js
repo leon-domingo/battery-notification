@@ -12,11 +12,16 @@ export function setWaitingNotification(notification) {
   }
 }
 
-export function getCronDefinition(frecuency) {
-  if (process.env.NODE_ENV !== 'dev') {
-    // frecuency = minutes
-    return `*/${frecuency} * * * *`
+export function getCronDefinition(frequency) {
+  const match = /^(\d+)([hms])$/.exec(frequency)
+  switch (match[2]) {
+    case 's':
+      return `*/${match[1]} * * * * *`
+
+    case 'm':
+      return `*/${match[1]} * * * *`
+
+    case 'h':
+      return `* */${match[1]} * * *`
   }
-  // frecuency = seconds
-  return `*/${frecuency} * * * * *`
 }
