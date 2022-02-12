@@ -7,5 +7,5 @@ export default {
     format: 'cjs',
   },
   plugins: [nodeResolve],
-  external: ['node-cron', 'systeminformation', 'node-notifier'],
+  external: ['node-cron', 'systeminformation', 'node-notifier', 'commander'],
 }
