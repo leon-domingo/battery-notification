@@ -1,0 +1,21 @@
+{
+  "name": "battery-notification",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "battery-level": "^3.0.0",
+    "node-cron": "^3.0.0",
+    "node-notifier": "^10.0.1",
+    "systeminformation": "^5.11.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0"
+  }
+}
