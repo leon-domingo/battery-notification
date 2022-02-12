@@ -16,8 +16,7 @@ export function getCronDefinition(frecuency) {
   if (process.env.NODE_ENV !== 'dev') {
     // frecuency = minutes
     return `*/${frecuency} * * * *`
-  } else {
-    // frecuency = seconds
-    return `*/${frecuency} * * * * *`
   }
+  // frecuency = seconds
+  return `*/${frecuency} * * * * *`
 }
