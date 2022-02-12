@@ -14,6 +14,11 @@ export function setWaitingNotification(notification) {
 
 export function getCronDefinition(frequency) {
   const match = /^(\d+)([hms])$/.exec(frequency)
+  if (match === null) {
+    throw new Error(
+      `Frequency value "${frequency}" is not valid. Try "s" for seconds (10s), "m" for minutes (5m) or "h" for hours (1h)`
+    )
+  }
   switch (match[2]) {
     case 's':
       return `*/${match[1]} * * * * *`

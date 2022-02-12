@@ -16,14 +16,18 @@ commander
   )
   .option(
     '-f, --frequency <value>',
-    'Frequency (in minutes) the process will watch the battery status',
+    'Frequency the process will watch the battery status. Format must be: <n>s for seconds <n>m for minutes and <n>h for hours. For example, 5s, 10m, 1h, ...',
     DEFAULT_FREQUENCY
   )
   .parse(process.argv)
 
 const options = commander.opts()
 
-const minLevel = +options.minValue
-const maxLevel = +options.maxValue
-const frequency = options.frequency
-main({ minLevel, maxLevel, frequency })
+try {
+  const minLevel = +options.minValue
+  const maxLevel = +options.maxValue
+  const frequency = options.frequency
+  main({ minLevel, maxLevel, frequency })
+} catch (error) {
+  console.error('Error: ' + error?.message)
+}
