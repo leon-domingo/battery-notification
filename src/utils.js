@@ -13,10 +13,10 @@ export function setWaitingNotification(notification) {
 }
 
 export function getCronDefinition(frequency) {
-  const match = /^(\d+)([hms])$/.exec(frequency)
+  const match = /^([1-9]|[1-5]\d|)([ms])$/.exec(frequency)
   if (match === null) {
     throw new Error(
-      `Frequency value "${frequency}" is not valid. Try "s" for seconds (10s), "m" for minutes (5m) or "h" for hours (1h)`
+      `Frequency value "${frequency}" is not valid. Try "s" for seconds (10s) or "m" for minutes (5m), and values between 1 and 59`
     )
   }
   switch (match[2]) {
@@ -25,8 +25,5 @@ export function getCronDefinition(frequency) {
 
     case 'm':
       return `*/${match[1]} * * * *`
-
-    case 'h':
-      return `* */${match[1]} * * *`
   }
 }

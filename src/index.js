@@ -16,7 +16,7 @@ commander
   )
   .option(
     '-f, --frequency <value>',
-    'Frequency the process will watch the battery status. Format must be: <n>s for seconds <n>m for minutes and <n>h for hours. For example, 5s, 10m, 1h, ...',
+    'Frequency the process will watch the battery status. Format must be: <n>[s|m], being "s" for seconds and "m" for minutes. In addition, <n> must be between 1 and 59. For example, 5s, 45s, 10m, 30m and so on',
     DEFAULT_FREQUENCY
   )
   .parse(process.argv)
