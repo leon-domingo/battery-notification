@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     node: true,
     commonjs: true,
@@ -7,6 +8,44 @@ module.exports = {
   extends: 'eslint:recommended',
   parserOptions: {
     ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    'no-undef': 'error',
+    'no-unused-vars': 'error',
+    indent: ['error', 2],
+    'keyword-spacing': ['error', { before: true }],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+      },
+    ],
+    'space-infix-ops': 'error',
+    'comma-spacing': [
+      'error',
+      {
+        before: false,
+        after: true,
+      },
+    ],
+    'linebreak-style': ['error', 'unix'],
+    eqeqeq: 'error',
+    'no-redeclare': 'error',
+    'object-curly-spacing': ['warn', 'always'],
+    'array-bracket-spacing': ['warn', 'never'],
+    'func-call-spacing': ['error', 'never'],
+    'no-dupe-args': 'error',
+    'no-dupe-keys': 'error',
+    'no-else-return': 'error',
+    'no-empty': 'error',
+    'no-const-assign': 'error',
+    'no-trailing-spaces': 'error',
+    'padded-blocks': ['error', 'never'],
+    'space-in-parens': ['error', 'never'],
+    semi: ['warn', 'never'],
+  },
 }

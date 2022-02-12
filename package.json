@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:watch": "npx rollup ./src/index.js --file dist/index.js --format cjs --watch",
+    "build:dist": "npx rollup ./src/index.js --file dist/index.js --format cjs",
+    "start": "node dist/index.js",
+    "dev": "NODE_ENV=dev node dist/index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "battery-level": "^3.0.0",
     "node-cron": "^3.0.0",
@@ -16,6 +19,7 @@
     "systeminformation": "^5.11.2"
   },
   "devDependencies": {
-    "eslint": "^8.8.0"
+    "eslint": "^8.8.0",
+    "rollup": "^2.67.2"
   }
 }
